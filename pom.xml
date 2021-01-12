@@ -101,7 +101,7 @@
 					<home>${glassfish.home}</home>
 				</container>
 				<configuration>
-					<type>existing</type>
+					<type>standalone</type>
 					<home>${glassfish.domainDir}</home>
 					<properties>
 						<cargo.glassfish.domain.name>${glassfish.domainName}</cargo.glassfish.domain.name>
@@ -112,6 +112,64 @@
             </plugin>
         </plugins>
     </build>
+	<profiles>
+		<profile>
+            <id>payara-local</id>
+            <properties>
+                <glassfish.home>${project.build.directory}/payara5</glassfish.home>
+                <glassfish.domainName>domain1</glassfish.domainName>
+            </properties>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>fish.payara.distributions</groupId>
+                                            <artifactId>payara</artifactId>
+                                            <version>${payara.version}</version>
+                                            <type>zip</type>
+                                            <overWrite>false</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <configuration>
+                            <container>
+                                <containerId>payara</containerId>
+                                <type>installed</type>
+                                <home>${glassfish.home}</home>
+                            </container>
+                            <configuration>
+                                <type>standalone</type>
+                                <properties>
+                                    <cargo.remote.password></cargo.remote.password>
+                                </properties>
+                            </configuration>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+	</profiles>
+		
+	
     
     <repositories>
         <repository>
