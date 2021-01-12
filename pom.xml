@@ -148,12 +148,12 @@
                             <artifactId>cargo-maven2-plugin</artifactId>
                             <configuration>
                                 <container>
-                                    <containerId>glassfish4x</containerId>
+                                    <containerId>payara</containerId>
                                     <type>installed</type>
                                     <home>${payara.home}</home>
                                 </container>
                                 <configuration>
-                                    <type>existing</type>
+                                    <type>standalone</type>
                                     <home>${payara.domainDir}</home>    				
                                     <properties>
                                         <cargo.remote.username>${payara.username}</cargo.remote.username>
