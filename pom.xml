@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<servlet.port>8080</servlet.port>
         <payara.home>/home/student/JavaTools/payara5.2020.5</payara.home>
-	<payara.domainDir>${glassfish.home}/glassfish/domains</payara.domainDir>
+	<payara.domainDir>/home/student/JavaTools/payara5.2020.5/glassfish/domains</payara.domainDir>
 	<payara.domainName>domain1</payara.domainName>
 	<payara.username>admin</payara.username>
 	<payara.password></payara.password>
