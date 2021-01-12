@@ -12,7 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <glassfish.home>/home/student/payara5.2020.5</glassfish.home>
+        <glassfish.home>/home/student/JavaTools/payara5.2020.5</glassfish.home>
 	    <glassfish.domainDir>${glassfish.home}/glassfish/domains</glassfish.domainDir>
 	    <glassfish.domainName>domain1</glassfish.domainName>
     </properties>
