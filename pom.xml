@@ -12,7 +12,6 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<servlet.port>8080</servlet.port>
         <payara.home>/home/student/JavaTools/payara5.2020.5</payara.home>
 	<payara.domainDir>/home/student/JavaTools/payara5.2020.5/glassfish/domains</payara.domainDir>
 	<payara.domainName>domain1</payara.domainName>
@@ -70,6 +69,35 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+		
+	    <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.21.0</version>
+                <executions>
+                    <execution>
+                        <id>perform-it</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                        <configuration>
+                            <systemProperties>
+                                <property>
+                                    <name>servlet.port</name>
+                                    <value>${servlet.port}</value>
+                                </property>
+                            </systemProperties>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>verify-it</id>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+		
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -148,7 +176,7 @@
                             <artifactId>cargo-maven2-plugin</artifactId>
                             <configuration>
                                 <container>
-                                    <containerId>payara</containerId>
+                                    <containerId>glassfish4x</containerId>
                                     <type>installed</type>
                                     <home>${payara.home}</home>
                                 </container>
@@ -169,7 +197,7 @@
                                 <dependency>
                                     <groupId>org.glassfish.main.deployment</groupId>
                                     <artifactId>deployment-client</artifactId>
-                                    <version>5.0</version>
+                                    <version>4.1.1</version>
                                 </dependency>            
                             </dependencies>
                         </plugin>
