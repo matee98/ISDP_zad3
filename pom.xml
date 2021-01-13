@@ -164,7 +164,6 @@
                                     </properties>
                                 </configuration>
                             </configuration>
-                            <!-- provides JSR88 client API to deploy on Payara -->
                             <dependencies>
                                 <dependency>
                                     <groupId>org.glassfish.main.deployment</groupId>
