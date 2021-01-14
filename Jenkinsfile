@@ -22,8 +22,8 @@ pipeline {
             steps{
             echo "db-init"
                 dir("/home/student/JavaTools/db-derby-10.15.1.3-bin/bin"){
-                    sh "echo \"run 'init.sql';\" | ij"
-                    sh "echo \"run 'fill.sql';\" | ij"
+                    sh "echo \"run 'init.sql';\" | ./ij"
+                    sh "echo \"run 'fill.sql';\" | ./ij"
                 }
             }
         }
