@@ -19,6 +19,11 @@ body{
     float: left;
 }
 
+h1{
+    color: #ac2925;
+    background-color: #985f0d;
+}
+
 .footer{
     border: 1px solid black;;
     text-align: center;
