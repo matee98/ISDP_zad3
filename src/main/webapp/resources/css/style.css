@@ -9,9 +9,6 @@ body{
 .menu{
 }
 
-.h1{
-    color: #ac2925;
-}
 .content{
     width: 100%;
     min-height: 500px;
@@ -20,6 +17,10 @@ body{
     padding: 10px;
     box-sizing: border-box;
     float: left;
+}
+
+.h1{
+    color: #ac2925;
 }
 
 .footer{
