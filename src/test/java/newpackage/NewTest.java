@@ -21,7 +21,7 @@ public class NewTest {
     @BeforeTest
     public void setupClass() {
         WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        driver = new FirefoxDriver(); // dobra zmiana
  
     }
  
