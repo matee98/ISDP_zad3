@@ -19,8 +19,9 @@ body{
     float: left;
 }
 
-.h1{
+h1{
     color: #ac2925;
+    background-color: #985f0d;
 }
 
 .footer{
