@@ -2,6 +2,7 @@ package newpackage;
  
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,6 +12,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class NewLocalizationTest {
     private WebDriver driver;
@@ -26,7 +29,7 @@ public class NewLocalizationTest {
         driver = new FirefoxDriver();
         url = "https://localhost:8181/WM/";
         login = "JDoe";
-     password = "P@ssw0rd";
+        password = "P@ssw0rd";
         newLocation = "AA-01-05-05";
         wait = new WebDriverWait(driver, 15);
  
@@ -47,10 +50,11 @@ public class NewLocalizationTest {
         passwordField.sendKeys(password);
 
         driver.findElement(By.xpath("//input[@value='Zaloguj']")).click();
+
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Lokalizacja")));
         driver.findElement(By.linkText("Lokalizacja")).click();
         
-wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='../location/createNewLocation.xhtml']")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='../location/createNewLocation.xhtml']")));
         driver.findElement(By.xpath("//a[@href='../location/createNewLocation.xhtml']")).click();
         
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='../main/index.xhtml']")));
@@ -59,24 +63,38 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='../locat
         locationTextField.sendKeys(newLocation);
         driver.findElement(By.name("CreateLocationForm:locationType")).click();
         driver.findElement(By.xpath("//option[@value='SHELF2']")).click();
-        driver.findElement(By.name("CreateLocationForm:j_idt34")).click();
+        driver.findElement(By.xpath("//input[@class='button']")).click();
         
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Lokalizacja")));
         driver.findElement(By.linkText("Lokalizacja")).click();
+
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='../location/listLocations.xhtml']")));
         driver.findElement(By.xpath("//a[@href='../location/listLocations.xhtml']")).click();
         
-WebElement table = driver.findElement(By.xpath("//table[@class='table']"));
+        WebElement table = driver.findElement(By.xpath("//table[@class='table']"));
 
-	WebElement test = table.findElement(By.xpath("//td[contains(text(), 'AA-01-05-05')]"));
-	Assert.assertEquals(test.getText(), newLocation);
-        table.findElement(By.xpath("//td[contains(text(), 'AA-01-05-05')]/parent::tr//td/input[@value='Usuwanie lokalizacji']")).click();
-//wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Lokalizsssacja")));
+        List<WebElement> values = table.findElements(By.xpath("//tr[td='AA-01-05-05']/td"));
+        Assert.assertEquals(values.get(0).getText(), newLocation);
+        Assert.assertEquals(values.get(1).getText(), "POŁOWA");
+        Assert.assertEquals(values.get(2).getText(), "30.0");
 
-wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='button']")));
-driver.findElement(By.xpath("//input[@class='button']")).click();
+        table.findElement(By.xpath("//tr[td='AA-01-05-05']/td/input[@value='Usuwanie lokalizacji']")).click();
 
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='button']")));
+        driver.findElement(By.xpath("//input[@class='button']")).click();
 
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='../main/index.xhtml']")));
+        try {
+            List<WebElement> values2 = driver.findElements(By.xpath("//table[@class='table']/tbody/tr[td='AA-01-05-05']/td"));
+            Assert.assertEquals(values2.size(), 0);
+        } catch (NoSuchElementException ex) {
+
+        }
+
+        driver.findElement(By.xpath("//a[@href='../common/logout.xhtml']")).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@value='Wyloguj']")));
+        driver.findElement(By.xpath("//input[@value='Wyloguj']")).click();
  }
  
     @AfterTest
