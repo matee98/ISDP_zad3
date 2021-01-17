@@ -8,6 +8,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -129,7 +130,9 @@ public class UserRegisterTests {
     @BeforeTest
     public void setupClass() {
         WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setHeadless(true);
+        driver = new FirefoxDriver(firefoxOptions);
     }
  
  
