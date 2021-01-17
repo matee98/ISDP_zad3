@@ -78,7 +78,10 @@
                 <configuration>
                     <skipTests>true</skipTests>
                     <excludes>
-                        <exclude>NewTest.java</exclude>
+                        <exclude>NewLocalizationTest.java</exclude>
+                        <exclude>TestTwo.java</exclude>
+                        <exclude>TestThree.java</exclude>
+                        <exclude>UserRegisterTests.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -148,6 +151,19 @@
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>undeploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -260,6 +276,7 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>2.22.0</version>
                         <executions>
@@ -268,6 +285,33 @@
                                     <goal>integration-test</goal>
                                     <goal>verify</goal>
                                 </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>surefire</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>none</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*Test</include>
+                                    </includes>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
