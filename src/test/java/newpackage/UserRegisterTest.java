@@ -16,7 +16,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
  
-public class UserRegisterTests {
+public class UserRegisterTest {
     private WebDriver driver;
     private String fname = "Mateusz";
     private String lname = "Szewc";
