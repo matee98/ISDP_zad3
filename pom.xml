@@ -77,6 +77,12 @@
                 <version>2.12.4</version>
                 <configuration>
                     <skipTests>false</skipTests>
+                    <excludes>
+                        <exclude>NewLocalizationTest.java</exclude>
+                        <exclude>TestTwo.java</exclude>
+                        <exclude>TestThree.java</exclude>
+                        <exclude>UserRegisterTests.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
