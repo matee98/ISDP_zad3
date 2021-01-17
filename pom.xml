@@ -151,19 +151,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.22.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 
         </plugins>
     </build>
@@ -268,27 +255,6 @@
         </profile>
 
         <profile>
-            <id>failsafe</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.0</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
             <id>surefire</id>
             <build>
                 <plugins>
@@ -305,8 +271,13 @@
                                         <exclude>none</exclude>
                                     </excludes>
                                     <includes>
-                                        <include>**/*Test</include>
+                                        <include>**/UserRegisterTests.java</include>
+                                        <include>**/TestTwo.java</include>
+                                        <include>**/TestThree.java</include>
+                                        <include>**/NewLocalizationTest.java</include>
                                     </includes>
+                                    <parallel>classes</parallel>
+                                    <threadCount>4</threadCount>
                                 </configuration>
                             </execution>
                         </executions>
