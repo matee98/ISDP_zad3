@@ -1,29 +1,38 @@
 package newpackage;
  
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
- 
+
+
 public class NewTest {
     private WebDriver driver;
-    @Test
-    public void testEasy() {
-        driver.get("http://demo.guru99.com/test/guru99home/");
-        String title = driver.getTitle();
-        Assert.assertTrue(title.contains("Demo Guru99 Page"));
-    }
- 
- 
+    private String adress;
+    private String login;
+    private String password;
+
     @BeforeTest
-    public void setupClass() {
+    public void setUp(){
         WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver(); // dobra zmiana
- 
+        driver = new FirefoxDriver();
+        adress = "https://localhost:8181/WM/faces/common/signIn.xhtml";
+        login = "JDoe";
+        password = "P@ssw0rd";
     }
+
+    @Test
+    public void UseCaseTest() {
+        driver.get(adress);
+        WebElement loginField = driver.findElement(By.name("j_username"));
+
+    }
+
  
  
     @AfterTest

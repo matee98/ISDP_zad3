@@ -39,5 +39,12 @@ pipeline {
                 }
             }
         }
+
+        stage("Integration tests"){
+            steps{
+                echo "Integration tests"
+                sh "mvn verify -Pfailsafe"
+            }
+        }
     }
 }
