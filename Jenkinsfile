@@ -35,7 +35,7 @@ pipeline {
             }
             post{
                 success{
-                    sh "mvn cargo:redeploy -Ppayara-remote"
+                    sh "mvn cargo:redeploy -Ppayara-remote -DskipTests"
                 }
             }
         }
