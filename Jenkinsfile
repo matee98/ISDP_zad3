@@ -43,7 +43,7 @@ pipeline {
         stage("Integration tests"){
             steps{
                 echo "Integration tests"
-                sh "mvn verify"
+                sh "mvn test"
             }
         }
     }
