@@ -31,10 +31,10 @@ pipeline {
         stage("db"){
             steps{
             echo "db-init"
-                dir("/home/student/JavaTools/db-derby-10.15.1.3-bin/bin"){
-                    sh "echo \"run 'init.sql';\" | ./ij"
-                    sh "echo \"run 'fill.sql';\" | ./ij"
-                }
+                // dir("/home/student/JavaTools/db-derby-10.15.1.3-bin/bin"){
+                sh "echo \"run 'init.sql';\" | /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/ij"
+                sh "echo \"run 'fill.sql';\" | /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/ij"
+                // }
             }
         }
         
