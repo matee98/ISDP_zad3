@@ -26,6 +26,8 @@ pipeline {
                     sh "echo \"run 'init.sql';\" | ./ij"
                     sh "echo \"run 'fill.sql';\" | ./ij"
                 }
+                sh "rm -rf /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/init.sql"
+                sh "rm -rf /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/fill.sql"
             }
         }
         
