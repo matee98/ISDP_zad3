@@ -17,7 +17,17 @@ pipeline {
                 }
             }
         }
-        
+        stage("startEnvironment"){
+            steps{
+                echo "starting server"
+                dir("/home/student/JavaTools/db-derby-10.15.1.3-bin/bin"){
+                    sh "./startNetworkServer"
+                }
+                dir("/home/student/JavaTools/payara5.2020.5/bin"){
+                    sh "./asadmin start-domain domain1"
+                }
+            }
+        }
         stage("db"){
             steps{
             echo "db-init"
