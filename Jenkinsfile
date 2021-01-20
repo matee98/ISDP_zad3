@@ -21,8 +21,8 @@ pipeline {
             steps{
             echo "db-init"
                 sh "cp init.sql /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/init.sql"
-                sh "cp /src/main/resources/createDB.sql /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/initDB.sql"
-                sh "cp /src/main/resources/init.sql /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/createDB.sql"
+                sh "cp ./src/main/resources/createDB.sql /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/initDB.sql"
+                sh "cp ./src/main/resources/init.sql /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/createDB.sql"
                 dir("/home/student/JavaTools/db-derby-10.15.1.3-bin/bin"){
                     sh "echo \"run 'init.sql';\" | ./ij"
                 }
