@@ -79,6 +79,7 @@
                     <excludes>
                         <exclude>**/*Test</exclude>
                     </excludes>
+                    <parallel>classes</parallel>
                 </configuration>
             </plugin>
             <plugin>
@@ -272,7 +273,7 @@
                                         <exclude>none</exclude>
                                     </excludes>
                                     <includes>
-                                        <include>**/UserRegisterTests.java</include>
+                                        <include>**/UserRegisterTest.java</include>
                                         <include>**/TestTwo.java</include>
                                         <include>**/TestThree.java</include>
                                         <include>**/NewLocalizationTest.java</include>
