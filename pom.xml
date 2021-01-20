@@ -79,6 +79,7 @@
                     <excludes>
                         <exclude>**/*Test</exclude>
                     </excludes>
+                    <parallel>classes</parallel>
                 </configuration>
             </plugin>
             <plugin>
