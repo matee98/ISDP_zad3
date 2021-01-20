@@ -17,13 +17,14 @@ pipeline {
                 }
             }
         }
-        
         stage("db"){
             steps{
             echo "db-init"
+                sh "cp ./setup.sh /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/setup.sh"
+                sh "cp ./src/main/resources/createDB.sql /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/createDB.sql"
+                sh "cp ./src/main/resources/initDB.sql /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/initDB.sql"
                 dir("/home/student/JavaTools/db-derby-10.15.1.3-bin/bin"){
-                    sh "echo \"run 'init.sql';\" | ./ij"
-                    sh "echo \"run 'fill.sql';\" | ./ij"
+                    sh "expect ./setup.sh"
                 }
             }
         }
@@ -31,7 +32,7 @@ pipeline {
         stage("build"){
             steps{
                 echo "Building"
-                sh "mvn package"
+                sh "mvn package -DskipTests"
             }
             post{
                 success{

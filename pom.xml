@@ -76,7 +76,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.4</version>
                 <configuration>
-                    <skipTests>false</skipTests>
+                    <excludes>
+                        <exclude>**/*Test</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -149,6 +151,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
     <profiles>
@@ -228,6 +231,7 @@
                                     <cargo.remote.password></cargo.remote.password>
                                     <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
                                     <cargo.hostname>localhost</cargo.hostname>
+                                    <cargo.glassfish.domain.name>domain1</cargo.glassfish.domain.name>
                                 </properties>
                             </configuration>
                         </configuration>
@@ -246,6 +250,38 @@
                                 <version>2.3.3</version>
                             </dependency>
                         </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>surefire</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>none</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/UserRegisterTests.java</include>
+                                        <include>**/TestTwo.java</include>
+                                        <include>**/TestThree.java</include>
+                                        <include>**/NewLocalizationTest.java</include>
+                                    </includes>
+                                    <parallel>classes</parallel>
+                                    <threadCount>4</threadCount>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
