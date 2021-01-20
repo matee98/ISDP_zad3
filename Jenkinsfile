@@ -45,6 +45,7 @@ pipeline {
             steps{
                 echo "Integration tests"
                 sh "mvn test -Psurefire"
+                //test
             }
         }
     }
