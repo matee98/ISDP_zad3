@@ -38,8 +38,6 @@ public class TestTwo {
     @Test
     public void UseCaseTest() {
 
-        Assert.assertEquals(1, 2);
-
         //logowanie
         driver.get(adress);
         driver.findElement(By.linkText("Logowanie")).click();
