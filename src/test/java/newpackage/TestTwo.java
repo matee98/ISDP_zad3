@@ -36,7 +36,9 @@ public class TestTwo {
     }
 
     @Test
-    public void UseCaseTest() throws InterruptedException {
+    public void UseCaseTest() {
+
+        Assert.assertEquals(1, 2);
 
         //logowanie
         driver.get(adress);
