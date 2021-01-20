@@ -277,7 +277,7 @@
                                         <include>**/TestThree.java</include>
                                         <include>**/NewLocalizationTest.java</include>
                                     </includes>
-                                    <parallel>classes</parallel>
+                                    <parallel>all</parallel>
                                     <threadCount>4</threadCount>
                                 </configuration>
                             </execution>
