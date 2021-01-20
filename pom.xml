@@ -231,6 +231,7 @@
                                     <cargo.remote.password></cargo.remote.password>
                                     <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
                                     <cargo.hostname>localhost</cargo.hostname>
+                                    <cargo.glassfish.domain.name>domain1</cargo.glassfish.domain.name>
                                 </properties>
                             </configuration>
                         </configuration>
