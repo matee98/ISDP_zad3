@@ -25,7 +25,7 @@ pipeline {
                 sh "cp ./src/main/resources/initDB.sql /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/initDB.sql"
                 dir("/home/student/JavaTools/db-derby-10.15.1.3-bin/bin"){
                     // sh "echo \"run 'init.sql';\" | ./ij"
-                    sh "expect ./setup.sh"
+                    sh "sudo expect ./setup.sh"
                 }
                 // sh "rm -rf /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/init.sql"
                 // sh "rm -rf /home/student/JavaTools/db-derby-10.15.1.3-bin/bin/createDB.sql"
