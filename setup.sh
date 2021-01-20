@@ -1,5 +1,4 @@
 #!/usr/bin/expect
-log_user 0
 spawn ./ij
 expect "ij>"
 send "connect 'jdbc:derby:WM;create=true;' user 'WM';\r"
