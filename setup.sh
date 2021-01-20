@@ -22,4 +22,5 @@ expect {
     }
     
 }
-interact
+expect eof
+wait
