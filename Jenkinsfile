@@ -32,23 +32,23 @@ pipeline {
             }
         }
         
-        stage("build"){
-            steps{
-                echo "Building"
-                sh "mvn package -DskipTests"
-            }
-            post{
-                success{
-                    sh "mvn cargo:redeploy -Ppayara-remote"
-                }
-            }
-        }
+        // stage("build"){
+        //     steps{
+        //         echo "Building"
+        //         sh "mvn package -DskipTests"
+        //     }
+        //     post{
+        //         success{
+        //             sh "mvn cargo:redeploy -Ppayara-remote"
+        //         }
+        //     }
+        // }
 
-        stage("Integration tests"){
-            steps{
-                echo "Integration tests"
-                sh "mvn test -Psurefire"
-            }
-        }
+        // stage("Integration tests"){
+        //     steps{
+        //         echo "Integration tests"
+        //         sh "mvn test -Psurefire"
+        //     }
+        // }
     }
 }
