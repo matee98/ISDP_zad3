@@ -20,6 +20,7 @@
         <payara.password></payara.password>
         <payara.adminPort>4848</payara.adminPort>
         <payara.hostname>localhost</payara.hostname>
+        <SuiteFile>test/testSuite.xml</SuiteFile>
     </properties>
 
     <dependencies>
@@ -76,10 +77,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.4</version>
                 <configuration>
-                    <excludes>
-                        <exclude>**/*Test</exclude>
-                    </excludes>
-                    <parallel>classes</parallel>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/testSuite.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
             <plugin>
@@ -269,17 +269,11 @@
                                     <goal>test</goal>
                                 </goals>
                                 <configuration>
-                                    <excludes>
-                                        <exclude>none</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/UserRegisterTest.java</include>
-                                        <include>**/TestTwo.java</include>
-                                        <include>**/TestThree.java</include>
-                                        <include>**/NewLocalizationTest.java</include>
-                                    </includes>
-                                    <parallel>all</parallel>
-                                    <threadCount>4</threadCount>
+                                    <parallel>classes</parallel>
+                                    <threadCount>3</threadCount>
+                                    <suiteXmlFiles>
+                                        <suiteXmlFile>testSuite.xml</suiteXmlFile>
+                                    </suiteXmlFiles>
                                 </configuration>
                             </execution>
                         </executions>
