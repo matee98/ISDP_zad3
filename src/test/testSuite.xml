@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Selenium Tests" parallel="classes">
-    <test name="parallel-tests" >
+<suite name="Selenium Tests" parallel="tests">
+    <test name="first" >
         <classes>
             <class name="newpackage.NewLocalizationTest" />
+        </classes>
+    </test>
+    <test name="second" >
+        <classes>
             <class name="newpackage.TestTwo" />
+        </classes>
+    </test>
+    <test name="third" >
+        <classes>
             <class name="newpackage.TestThree" />
+        </classes>
+    </test>
+    <test name="fourth" >
+        <classes>
             <class name="newpackage.UserRegisterTest" />
         </classes>
     </test>
 </suite>
+
+
+
