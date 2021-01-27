@@ -5,7 +5,8 @@
         <classes>
             <class name="newpackage.NewLocalizationTest" />
             <class name="newpackage.TestTwo" />
-            <class name="newpackage.TestThree"/>
+            <class name="newpackage.TestThree" />
+            <class name="newpackage.UserRegisterTest" />
         </classes>
     </test>
 </suite>
