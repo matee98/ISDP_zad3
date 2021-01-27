@@ -40,5 +40,12 @@ pipeline {
                 }
             }
         }
+        
+        stage("tests"){
+            steps{
+                echo "Testing"
+                sh "mvn test"
+            }
+        }
     }
 }
